@@ -1,5 +1,7 @@
-import express from "express";
 import dotenv from "dotenv";
+dotenv.config(); // Load environment variables immediately
+
+import express from "express";
 import ProductRoute from "./route/ProductRoute.js";
 import connectDB from "./lib/db.js";
 import cors from "cors";
@@ -15,8 +17,8 @@ app.use((req, res, next) => {
   next();
 });
 
-dotenv.config();
-connectDB();
+connectDB(); // Connect to MongoDB
+
 app.use("/api/v1", ProductRoute);
 
 const port = process.env.PORT || 3000;
