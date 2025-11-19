@@ -20,6 +20,10 @@ app.use((req, res, next) => {
 connectDB(); // Connect to MongoDB
 
 app.use("/api/v1", ProductRoute);
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", () => {
