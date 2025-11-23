@@ -5,10 +5,10 @@ import MultipleInvoiceSchema from "../model/MultipleInvoiceSchema.js";
 export const PostInvoice = async (req, res) => {
   try {
     await connectDB();
-    const { customername, price, quantity, litre } = req.body;
+    const { customerName, price, quantity, litre } = req.body;
 
     const invoice = await InvoiceSchema.create({
-      customername,
+      customerName,
       litre,
       price,
       quantity,
@@ -26,19 +26,17 @@ export const MultipleInvoiceController = async (req, res) => {
   try {
     await connectDB();
     const {
-      customername,
+      customerName,
       price,
       quantity,
       litre,
       price2,
       quantity2,
       litre2,
-      subtotal,
-      subtotal2,
     } = req.body;
 
     const invoice = await MultipleInvoiceSchema.create({
-      customername,
+      customerName,
       litre,
       price,
       quantity,

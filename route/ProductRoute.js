@@ -17,6 +17,6 @@ router.post("/add", PostProduct);
 
 // {invoice route}
 router.post("/invoice", PostInvoice);
-router.post("/invoice", MultipleInvoiceController);
+router.post("/multiple-invoice", MultipleInvoiceController);
 
 export default router;
