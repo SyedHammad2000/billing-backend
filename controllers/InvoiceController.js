@@ -25,15 +25,12 @@ export const PostInvoice = async (req, res) => {
 export const MultipleInvoiceController = async (req, res) => {
   try {
     await connectDB();
-    const {
-      customerName,
-      price,
-      quantity,
-      litre,
-      price2,
-      quantity2,
-      litre2,
-    } = req.body;
+    const { customerName, price, quantity, litre, price2, quantity2, litre2 } =
+      req.body;
+
+    const subtotal1 = price * quantity;
+    const subtotal2 = price2 * quantity2;
+    const subtotal = subtotal1 + subtotal2;
 
     const invoice = await MultipleInvoiceSchema.create({
       customerName,
@@ -43,9 +40,9 @@ export const MultipleInvoiceController = async (req, res) => {
       litre2,
       price2,
       quantity2,
-      subtotal: price * quantity,
-      subtotal2: price2 * quantity2,
-      total: subtotal + subtotal2,
+      subtotal1,
+      subtotal2,
+      total: subtotal,
     });
     await invoice.save();
     res.status(200).json({ invoice, message: "Invoice added successfully" });
