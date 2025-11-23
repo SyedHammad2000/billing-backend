@@ -10,7 +10,7 @@ const InvoiceSchema = new mongoose.Schema(
       ref: "Product",
     },
     litre: {
-      type: Number,
+      type: String,
       required: true,
     },
     price: {

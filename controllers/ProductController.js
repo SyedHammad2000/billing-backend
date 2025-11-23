@@ -1,7 +1,9 @@
 import ProductSchema from "../model/ProductSchema.js";
+import connectDB from "../lib/db.js";
 
 export const GetProduct = async (req, res) => {
   try {
+    await connectDB();
     const product = await ProductSchema.find();
     res.status(200).json(product);
   } catch (error) {
@@ -11,6 +13,7 @@ export const GetProduct = async (req, res) => {
 
 export const PostProduct = async (req, res) => {
   try {
+    connectDB();
     const { name, price, image, litre } = req.body;
     console.log(name);
 
@@ -30,6 +33,7 @@ export const PostProduct = async (req, res) => {
 
 export const GetProductById = async (req, res) => {
   try {
+    connectDB();
     const { id } = req.params;
     const product = await ProductSchema.findById(id);
     res.status(200).json(product);

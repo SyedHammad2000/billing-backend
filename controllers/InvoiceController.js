@@ -1,7 +1,9 @@
+import connectDB from "../lib/db.js";
 import InvoiceSchema from "../model/InvoiceSchema.js";
 
 export const PostInvoice = async (req, res) => {
   try {
+    connectDB
     const { customername, price, quantity, litre } = req.body;
 
     const invoice = await InvoiceSchema.create({
