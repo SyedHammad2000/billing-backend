@@ -13,7 +13,7 @@ export const GetProduct = async (req, res) => {
 
 export const PostProduct = async (req, res) => {
   try {
-    connectDB();
+    await connectDB();
     const { name, price, image, litre } = req.body;
     console.log(name);
 
@@ -33,7 +33,7 @@ export const PostProduct = async (req, res) => {
 
 export const GetProductById = async (req, res) => {
   try {
-    connectDB();
+    await connectDB();
     const { id } = req.params;
     const product = await ProductSchema.findById(id);
     res.status(200).json(product);
