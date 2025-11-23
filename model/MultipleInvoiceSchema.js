@@ -51,4 +51,5 @@ const MultipleInvoiceSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Invoice", MultipleInvoiceSchema);
+export default mongoose.models.Invoice ||
+  mongoose.model("Invoice", MultipleInvoiceSchema);
