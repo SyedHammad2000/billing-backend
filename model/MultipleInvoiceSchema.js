@@ -33,11 +33,9 @@ const MultipleInvoiceSchema = new mongoose.Schema(
     },
     subtotal1: {
       type: Number,
-      default: 0,
     },
     subtotal2: {
       type: Number,
-      default: 0,
     },
     total: {
       type: Number,

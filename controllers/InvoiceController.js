@@ -14,7 +14,6 @@ export const PostInvoice = async (req, res) => {
       quantity,
       total: price * quantity,
     });
-    await invoice.save();
     res.status(200).json({ invoice, message: "Invoice added successfully" });
   } catch (error) {
     console.log(error);
@@ -22,15 +21,16 @@ export const PostInvoice = async (req, res) => {
   }
 };
 
-export const MultipleInvoiceController = async (req, res) => {
+export const PostMultipleInvoice = async (req, res) => {
   try {
     await connectDB();
     const { customerName, price, quantity, litre, price2, quantity2, litre2 } =
       req.body;
 
+    console.log(req.body);
+
     const subtotal1 = price * quantity;
     const subtotal2 = price2 * quantity2;
-    const subtotal = subtotal1 + subtotal2;
 
     const invoice = await MultipleInvoiceSchema.create({
       customerName,
@@ -42,9 +42,8 @@ export const MultipleInvoiceController = async (req, res) => {
       quantity2,
       subtotal1,
       subtotal2,
-      total: subtotal,
+      total: price * quantity + price2 * quantity2,
     });
-    await invoice.save();
     res.status(200).json({ invoice, message: "Invoice added successfully" });
   } catch (error) {
     console.log(error);

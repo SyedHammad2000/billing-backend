@@ -5,8 +5,8 @@ import {
   PostProduct,
 } from "../controllers/ProductController.js";
 import {
-  MultipleInvoiceController,
   PostInvoice,
+  PostMultipleInvoice,
 } from "../controllers/InvoiceController.js";
 
 const router = express.Router();
@@ -17,6 +17,6 @@ router.post("/add", PostProduct);
 
 // {invoice route}
 router.post("/invoice", PostInvoice);
-router.post("/multiple-invoice", MultipleInvoiceController);
+router.post("/multipleinvoice", PostMultipleInvoice);
 
 export default router;
