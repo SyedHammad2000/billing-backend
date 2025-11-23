@@ -6,10 +6,6 @@ const InvoiceSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    productid: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
     litre: {
       type: String,
       required: true,

@@ -4,11 +4,9 @@ const MultipleInvoiceSchema = new mongoose.Schema(
   {
     customerName: {
       type: String,
+      required: true,
     },
-    productid: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
+
     litre: {
       type: String,
       required: true,
@@ -19,25 +17,29 @@ const MultipleInvoiceSchema = new mongoose.Schema(
     },
     quantity: {
       type: Number,
-      default: 1,
-    },
-    total: {
-      type: Number,
-      required: true,
-    },
-    productid2: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+      default: 0,
     },
     litre2: {
       type: String,
+      required: true,
     },
     price2: {
       type: Number,
+      required: true,
     },
     quantity2: {
       type: Number,
       default: 0,
+    },
+    subtotal: {
+      type: Number,
+    },
+    subtotal2: {
+      type: Number,
+    },
+    total: {
+      type: Number,
+      required: true,
     },
     date: {
       type: Date,
