@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
 
-const InvoiceSchema = new mongoose.Schema(
+const MultipleInvoiceSchema = new mongoose.Schema(
   {
     customerName: {
       type: String,
-      required: true,
     },
     productid: {
       type: mongoose.Schema.Types.ObjectId,
@@ -26,6 +25,20 @@ const InvoiceSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    productid2: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+    litre2: {
+      type: String,
+    },
+    price2: {
+      type: Number,
+    },
+    quantity2: {
+      type: Number,
+      default: 0,
+    },
     date: {
       type: Date,
       default: Date.now(),
@@ -36,4 +49,4 @@ const InvoiceSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Invoice", InvoiceSchema);
+export default mongoose.model("Invoice", MultipleInvoiceSchema);

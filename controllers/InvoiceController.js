@@ -8,7 +8,7 @@ export const PostInvoice = async (req, res) => {
 
     const invoice = await InvoiceSchema.create({
       customername,
-      productid: "691c5c0f8f6e670b39092fce",
+      productid,
       litre,
       price,
       quantity,
@@ -16,6 +16,16 @@ export const PostInvoice = async (req, res) => {
     });
     await invoice.save();
     res.status(200).json({ invoice, message: "Invoice added successfully" });
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
+
+const MultipleInvoiceController = async (req, res) => {
+  try {
+    await connectDB();
+    const { customername, price, quantity, litre } = req.body;
   } catch (error) {
     console.log(error);
     throw new Error(error);
