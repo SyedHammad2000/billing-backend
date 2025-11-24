@@ -21,11 +21,11 @@ const MultipleInvoiceSchema = new mongoose.Schema(
     },
     litre2: {
       type: String,
-      required: true,
     },
     price2: {
       type: Number,
-      required: true,
+      default: 0,
+      
     },
     quantity2: {
       type: Number,

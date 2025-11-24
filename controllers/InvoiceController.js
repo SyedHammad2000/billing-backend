@@ -34,16 +34,17 @@ export const PostMultipleInvoice = async (req, res) => {
       litre2,
     } = req.body;
 
-    if (!litre2 || !price2 || !quantity2) {
+    if (!price1 || !quantity1 || !litre1)
       return res
         .status(400)
-        .json({ error: "Second product is required for multiple invoice" });
-    }
+        .json({ message: "Please provide price2 and quantity2" });
+    const Price2 = Number(price2) || 0;
+    const Quantity2 = Number(quantity2) || 0;
 
-    console.log("req.body", req.body);
+    console.log("req.body", req.body, price2, quantity2);
 
     const subtotal1 = price1 * quantity1;
-    const subtotal2 = price2 * quantity2;
+    const subtotal2 = Price2 * Quantity2;
 
     const invoice = await MultipleInvoiceSchema.create({
       customerName,
@@ -51,11 +52,11 @@ export const PostMultipleInvoice = async (req, res) => {
       price1,
       quantity1,
       litre2,
-      price2,
-      quantity2,
+      price2: Price2,
+      quantity2: Quantity2,
       subtotal1,
       subtotal2,
-      total: price1 * quantity1 + price2 * quantity2,
+      total: price1 * quantity1 + Price2 * Quantity2,
     });
     res.status(200).json({ invoice, message: "invoice added successfully" });
   } catch (error) {
