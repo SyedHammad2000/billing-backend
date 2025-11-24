@@ -7,15 +7,15 @@ const MultipleInvoiceSchema = new mongoose.Schema(
       required: true,
     },
 
-    litre: {
+    litre1: {
       type: String,
       required: true,
     },
-    price: {
+    price1: {
       type: Number,
       required: true,
     },
-    quantity: {
+    quantity1: {
       type: Number,
       default: 0,
     },
@@ -50,5 +50,5 @@ const MultipleInvoiceSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.models.Invoice ||
-  mongoose.model("Invoice", MultipleInvoiceSchema);
+export default mongoose.models.MultipleInvoice ||
+  mongoose.model("MultipleInvoice", MultipleInvoiceSchema);
