@@ -2,7 +2,19 @@ import connectDB from "../lib/db.js";
 
 import MultipleInvoiceSchema from "../model/MultipleInvoiceSchema.js";
 
+export const GetInvoice = async (req, res) => {
+  try {
+    await connectDB();
+    // ascending order
+    const invoice = await MultipleInvoiceSchema.find()
+      .sort({ createdAt: "desc" })
+      .limit(10);
 
+    res.status(200).json(invoice);
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 export const PostMultipleInvoice = async (req, res) => {
   try {

@@ -3,6 +3,7 @@ dotenv.config(); // Load environment variables immediately
 
 import express from "express";
 import ProductRoute from "./route/ProductRoute.js";
+import InvoiceRoute from "./route/Invoiceroute.js";
 import connectDB from "./lib/db.js";
 import cors from "cors";
 
@@ -20,10 +21,10 @@ app.use((req, res, next) => {
 connectDB(); // Connect to MongoDB
 
 app.use("/api/v1", ProductRoute);
+app.use("/api/v1/order", InvoiceRoute);
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
-
 
 const port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", () => {
