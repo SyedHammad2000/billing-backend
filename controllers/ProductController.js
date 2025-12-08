@@ -14,14 +14,17 @@ export const GetProduct = async (req, res) => {
 export const PostProduct = async (req, res) => {
   try {
     await connectDB();
-    const { name, price, image, litre } = req.body;
-    console.log(name);
+    const { customerName, price1, image, litre1, price2, litre2 } = req.body;
+    console.log(customerName);
 
     const product = await ProductSchema.create({
-      name,
-      price,
+      customerName,
+      price1,
       image,
-      litre,
+      litre1,
+      price2,
+      litre2,
+      
     });
     await product.save();
     res.status(200).json({ product, message: "Product added successfully" });
